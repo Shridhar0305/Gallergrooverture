@@ -1,0 +1,44 @@
+//Name: Shridhar Vashishtha
+// CSCI fall 2022, project 3
+public class Trie<T> {
+    private TrieNode<T> root;
+
+    /**
+     * constructor
+     */
+    public Trie(){
+        root = new TrieNode<T>();
+    }
+
+    /**
+     * gets the appropriate node for the given string
+     * @param value is the given string
+     * @return is the node associated with the string
+     */
+    private TrieNode<T> getNode(String value){
+        TrieNode<T> ans = root;
+        for(int i = 0; i < value.length(); i++){
+            ans = ans.getChild(value.charAt(i));
+        }
+        return ans;
+    }
+
+    /**
+     * gets the data associated with the trienode of the given string
+     * @param value is the given string
+     * @return is the data stored in the trienode of the string
+     */
+    public T get(String value){
+        return getNode(value).getData();
+    }
+
+    /**
+     * sets the data in the trienode of the given string to the data provided
+     * @param value is the given string
+     * @param dat is the data to be set in the trienode of the given string
+     */
+    public void put(String value, T dat){
+        getNode(value).setData(dat);
+        return;
+    }
+}
